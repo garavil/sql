@@ -70,7 +70,7 @@ async function main(){
     }
     catch(err){
         console.log(err)
-        await connnection.end();
+        await connection.end();
     }
 }
 
