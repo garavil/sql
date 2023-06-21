@@ -21,7 +21,7 @@ async function main(){
         let [result2] = await connection.execute(sql2);
         console.log(result2);
 
-        //RETO 3 (no está bien)
+        //RETO 3 
         let sql3 ="SELECT  t.name , t.surname , title, COUNT(*) AS total_students FROM ((((subject AS s JOIN subject_teacher AS st ON s.id_subjects=st.subject_id) INNER JOIN teachers AS t ON st.teacher_id=t.id_teachers) INNER JOIN class AS c ON st.group_id=c.id_class) INNER JOIN students AS stu ON c.id_class=stu.group_id )GROUP BY title, t.name, t.surname;"
         let[result3] = await connection.execute(sql3);
         console.log(result3);
