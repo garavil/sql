@@ -22,7 +22,7 @@ async function main(){
         console.log(result2);
 
         //RETO 3 (no está bien)
-        let sql3 ="SELECT t.name, t.surname, su.title FROM ((((teachers as t INNER JOIN subject_teacher as s ON t.id_teachers = s.teacher_id) INNER JOIN class ON class.id_class = s.group_id) INNER JOIN subject as su  ON s.subject_id = su.id_subjects) INNER JOIN students ON students.group_id = class.id_class);"
+        let sql3 ="SELECT  t.name , t.surname , title, COUNT(*) AS total_students FROM ((((subject AS s JOIN subject_teacher AS st ON s.id_subjects=st.subject_id) INNER JOIN teachers AS t ON st.teacher_id=t.id_teachers) INNER JOIN class AS c ON st.group_id=c.id_class) INNER JOIN students AS stu ON c.id_class=stu.group_id )GROUP BY title, t.name, t.surname;"
         let[result3] = await connection.execute(sql3);
         console.log(result3);
     }
